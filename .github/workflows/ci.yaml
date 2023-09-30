@@ -16,6 +16,7 @@ jobs:
       - name: Run chezmoi apply
         env:
           EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+          DOTFILES_DEBUG: 1
         run: |
           printf '${EMAIL_ADDRESS}\n' | sh -c "$(curl -fsLS get.chezmoi.io)" -- \
             init --apply --purge-binary --force --no-tty --source-path $GITHUB_WORKSPACE
