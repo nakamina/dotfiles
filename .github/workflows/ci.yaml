@@ -18,5 +18,8 @@ jobs:
           EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
           DOTFILES_DEBUG: 1
         run: |
-          printf '${EMAIL_ADDRESS}\n' | sh -c "$(curl -fsLS get.chezmoi.io)" -- \
+          cmd="$(curl -fsLS get.chezmoi.io)"
+          find "$(sh -c ${cmd} source-path)" -type f -name "encrypted_*" -exec rm -fv {} +
+
+          printf '${EMAIL_ADDRESS}\n' | sh -c "${cmd}" -- \
             init --apply --purge-binary --force --no-tty --source-path $GITHUB_WORKSPACE
