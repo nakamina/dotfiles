@@ -17,5 +17,5 @@ jobs:
         env:
           EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
         run: |
-          ls
-          printf '${EMAIL_ADDRESS}\n' | sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --purge-binary --force --source-path $GITHUB_WORKSPACE
+          printf '${EMAIL_ADDRESS}\n' | sh -c "$(curl -fsLS get.chezmoi.io)" -- \
+            init --apply --purge-binary --force --no-tty --source-path $GITHUB_WORKSPACE
