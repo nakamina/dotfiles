@@ -1,0 +1,9 @@
+{{- $email := promptStringOnce . "email" "Email address" -}}
+
+data:
+    email: {{ $email | quote }}
+
+encryption: "age"
+age:
+    identity: "~/.config/age/key.txt"
+    recipient: "age1wrpfs9s8qammr2wm6vu6t287qdqzyete5d93h7f3fau5h0xlkdhqnmk4pc"
