@@ -1,4 +1,4 @@
-# dotfiles
+# 🏠 dotfiles
 
 [![CI](https://github.com/nakamina/dotfiles/actions/workflows/ci.yaml/badge.svg)](https://github.com/nakamina/dotfiles/actions/workflows/ci.yaml)
 
