@@ -8,7 +8,7 @@ fi
 
 function install_rosetta() {
     local rosetta_path="/Library/Apple/usr/share/rosetta/rosetta"
-    if ! [[ -f "${rosetta_path}" ]]; then
+    if ! [[ -f "${rosetta_path}" ]] && [[ $(uname -m) == "arm64" ]]; then
         softwareupdate --install-rosetta --agree-to-license
     fi
 }
