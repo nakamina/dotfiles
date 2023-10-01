@@ -26,14 +26,10 @@ jobs:
           #
           # run `chezmoi init`
           #
-          "${CHECMOI_CMD}" init nakamina --promptString "Email address"="${EMAIL_ADDRESS}"
+          "${CHECMOI_CMD}" init nakamina/dotfiles --promptString "Email address"="${EMAIL_ADDRESS}"
 
-      # - name: Run chezmoi apply
-      #   env:
-      #     DOTFILES_DEBUG: 1
-      #   run: |
-      #     cmd="$(curl -fsLS get.chezmoi.io)"
-      #     find . -type f -name "encrypted_*" -exec rm -fv {} +
-
-      #     printf '${EMAIL_ADDRESS}\n' | sh -c "${cmd}" -- \
-      #       init --apply --purge-binary --force --no-tty --source-path $GITHUB_WORKSPACE
+      - name: Run chezmoi apply
+        env:
+          DOTFILES_DEBUG: 1
+        run: |
+          "${CHECMOI_CMD}" apply
