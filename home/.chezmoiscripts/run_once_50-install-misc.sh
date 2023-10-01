@@ -46,7 +46,11 @@ function install_brew_packages() {
     done
 
     if [[ ${#missing_packages[@]} -gt 0 ]]; then
-        brew install --force "${missing_packages[@]}"
+        if "${CI:-false}"; then
+            brew info "${missing_packages[@]}"
+        else
+            brew install --force "${missing_packages[@]}"
+        fi
     fi
 }
 
@@ -60,7 +64,11 @@ function install_brew_cask_packages() {
     done
 
     if [[ ${#missing_packages[@]} -gt 0 ]]; then
-        brew install --cask --force "${missing_packages[@]}"
+        if "${CI:-false}"; then
+            brew info --cask "${missing_packages[@]}"
+        else
+            brew install --cask --force "${missing_packages[@]}"
+        fi
     fi
 }
 
